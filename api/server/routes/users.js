@@ -1,9 +1,19 @@
-var express = require('express');
+import express from 'express';
+import {
+	getUser,
+	finalizeExternalLogin,
+	logout,
+	initiateExternalLogin
+} from '../controllers/userController.js';
+
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+router.get('/', getUser);
+
+router.get('/login', initiateExternalLogin);
+
+router.get('/logout', logout);
+
+router.get('/finalizeExternalLogin', finalizeExternalLogin);
 
 module.exports = router;
